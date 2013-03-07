@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
 
@@ -11,7 +13,7 @@
     This plugin generates the image files (different formats) for the UMLet diagrams (xml files). 
     It is built on the top of UMLet editor implementation.
   </description>
-  
+
   <url>https://github.com/ykryshchuk/umlet-maven-plugin/wiki</url>
 
   <inceptionYear>2013</inceptionYear>
@@ -21,19 +23,19 @@
     <developerConnection>scm:git:git@github.com:ykryshchuk/umlet-maven-plugin.git</developerConnection>
     <url>https://github.com/ykryshchuk/umlet-maven-plugin</url>
   </scm>
-  
+
   <licenses>
-    
+
     <license>
       <name>The Apache Software License, Version 2.0</name>
       <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
       <distribution>repo</distribution>
     </license>
-    
+
   </licenses>
-  
+
   <developers>
-    
+
     <developer>
       <id>ykryshchuk</id>
       <email>yuriy.kryshchuk@gmail.com</email>
@@ -44,8 +46,26 @@
         <role>all</role>
       </roles>
     </developer>
-    
+
   </developers>
+
+  <distributionManagement>
+    <repository>
+      <id>plugins.distribution.repository</id>
+      <name>Distribution Repository for Maven Plugins</name>
+      <url>${distribution.repository.url}</url>
+    </repository>
+    <snapshotRepository>
+      <id>plugins.snapshot.repository</id>
+      <name>Snapshot Repository for Maven Plugins</name>
+      <url>${distribution.snapshot.url}</url>
+    </snapshotRepository>
+    <site>
+      <id>plugins.site</id>
+      <name>Site for QuizManager</name>
+      <url>${site.url}</url>
+    </site>
+  </distributionManagement>
 
   <build>
 
@@ -70,7 +90,7 @@
           <artifactId>maven-gpg-plugin</artifactId>
           <version>1.4</version>
         </plugin>
-          
+
       </plugins>
 
     </pluginManagement>
@@ -99,7 +119,7 @@
           </execution>
         </executions>
       </plugin>
-      
+
     </plugins>
 
   </build>
@@ -141,7 +161,7 @@
         </plugins>
       </build>
     </profile>
-    
+
     <profile>
       <id>release-sign-artifacts</id>
       <activation>
@@ -351,6 +371,9 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <batik.version>1.7</batik.version>
+    <distribution.repository.url>${local.repository.base}/distribution</distribution.repository.url>
+    <snapshot.repository.url>${local.repository.base}/snapshot</snapshot.repository.url>
+    <site.url>${local.repository.base}/site/maven-plugins/${project.artifactId}</site.url>
   </properties>
 
 </project>
