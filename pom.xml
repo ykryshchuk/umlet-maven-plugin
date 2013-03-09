@@ -2,6 +2,12 @@
 
   <modelVersion>4.0.0</modelVersion>
 
+  <parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>7</version>
+  </parent>
+
   <groupId>com.kryshchuk.maven.plugins</groupId>
   <artifactId>umlet-maven-plugin</artifactId>
   <version>1.0.2-SNAPSHOT</version>
@@ -19,7 +25,7 @@
   <scm>
     <connection>scm:git:git://github.com/ykryshchuk/umlet-maven-plugin.git</connection>
     <developerConnection>scm:git:git@github.com:ykryshchuk/umlet-maven-plugin.git</developerConnection>
-    <url>https://github.com/ykryshchuk/umlet-maven-plugin</url>
+    <url>git@github.com:ykryshchuk/umlet-maven-plugin.git</url>
   </scm>
 
   <licenses>
@@ -48,21 +54,13 @@
   </developers>
 
   <distributionManagement>
-    <repository>
-      <id>plugins.distribution.repository</id>
-      <name>Distribution Repository for Maven Plugins</name>
-      <url>${distribution.repository.url}</url>
-    </repository>
-    <snapshotRepository>
-      <id>plugins.snapshot.repository</id>
-      <name>Snapshot Repository for Maven Plugins</name>
-      <url>${distribution.snapshot.url}</url>
-    </snapshotRepository>
+    
     <site>
       <id>plugins.site</id>
       <name>Site for QuizManager</name>
       <url>${site.url}</url>
     </site>
+    
   </distributionManagement>
 
   <build>
@@ -369,8 +367,6 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <batik.version>1.7</batik.version>
-    <distribution.repository.url>${local.repository.base}/distribution</distribution.repository.url>
-    <snapshot.repository.url>${local.repository.base}/snapshot</snapshot.repository.url>
     <site.url>${local.repository.base}/site/maven-plugins/${project.artifactId}</site.url>
   </properties>
 
