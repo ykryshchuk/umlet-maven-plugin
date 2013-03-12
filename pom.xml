@@ -2,17 +2,13 @@
 
   <modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>org.sonatype.oss</groupId>
-    <artifactId>oss-parent</artifactId>
-    <version>7</version>
-  </parent>
-
   <groupId>com.kryshchuk.maven.plugins</groupId>
   <artifactId>umlet-maven-plugin</artifactId>
   <version>1.0.2-SNAPSHOT</version>
   <packaging>maven-plugin</packaging>
+  
   <name>Maven UMLet Plugin</name>
+  
   <description>
     This plugin generates the image files (different formats) for the UMLet diagrams (xml files). 
     It is built on the top of UMLet editor implementation.
@@ -31,8 +27,8 @@
   <licenses>
 
     <license>
-      <name>The Apache Software License, Version 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <name>GNU GENERAL PUBLIC LICENSE</name>
+      <url>http://www.gnu.org/licenses/gpl.html</url>
       <distribution>repo</distribution>
     </license>
 
@@ -55,10 +51,22 @@
 
   <distributionManagement>
     
+    <snapshotRepository>
+      <id>sonatype-nexus-snapshots</id>
+      <name>Sonatype Nexus Snapshots</name>
+      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+    </snapshotRepository>
+    
+    <repository>
+      <id>sonatype-nexus-staging</id>
+      <name>Nexus Release Repository</name>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+    
     <site>
       <id>plugins.site</id>
       <name>Site for QuizManager</name>
-      <url>${site.url}</url>
+      <url>${local.repository.base}/site/maven-plugins/${project.artifactId}</url>
     </site>
     
   </distributionManagement>
@@ -367,7 +375,6 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <batik.version>1.7</batik.version>
-    <site.url>${local.repository.base}/site/maven-plugins/${project.artifactId}</site.url>
   </properties>
 
 </project>
