@@ -308,6 +308,18 @@
         <artifactId>batik-xml</artifactId>
         <version>${batik.version}</version>
       </dependency>
+      
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.8.2</version>
+      </dependency>
+
+      <dependency>
+        <groupId>log4j</groupId>
+        <artifactId>log4j</artifactId>
+        <version>1.2.15</version>
+      </dependency>
 
     </dependencies>
 
@@ -381,6 +393,18 @@
     <dependency>
       <groupId>batik</groupId>
       <artifactId>batik-xml</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+    
+     <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
       <scope>runtime</scope>
     </dependency>
 
