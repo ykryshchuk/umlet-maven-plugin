@@ -30,10 +30,11 @@ import org.apache.maven.plugins.annotations.Parameter;
 import com.baselet.diagram.DiagramHandler;
 
 /**
- * Goal which converts the UMLet uxf diagram into the graphics format.
+ * Goal which converts the UMLet UXF diagrams into the graphics files.
  * 
+ * @since 1.0.0
  */
-@Mojo(name = "convert", defaultPhase = LifecyclePhase.PRE_SITE)
+@Mojo(name = "convert", defaultPhase = LifecyclePhase.PRE_SITE, threadSafe = true)
 public class ConvertDiagramMojo extends AbstractMojo {
 
   private static final FileFilter DIAGRAM_FILEFILTER = new FileFilter() {
@@ -51,36 +52,47 @@ public class ConvertDiagramMojo extends AbstractMojo {
   };
 
   /**
-   * Target directory to store the converted images.
+   * Target directory to store the converted images. If the source directory contains the sub-directories with diagram
+   * sources the generated image files will be created in the same sub-directories under the target directory. For
+   * example, the diagram <code>diagramDirectory/overview.uxf</code> will be converted into
+   * <code>targetDirectory/overview.png</code>, and the directory <code>diagramDirectory/sub1/sub2/details.uxf</code>
+   * will be converted into <code>targetDirectory/sub1/sub2/details.png</code>
+   * 
+   * @since 1.0.0
    */
   @Parameter(defaultValue = "${project.reporting.outputDirectory}/uml", property = "umlet.targetDir", required = true)
   private File outputDirectory;
 
   /**
-   * Target directory to store the converted images.
+   * Root source directory with UMLet UXF diagrams. Sub-directories will be scanned for the diagram sources as well.
+   * 
+   * @since 1.0.0
    */
   @Parameter(defaultValue = "${basedir}/src/site/resources/uml", property = "umlet.sourceDir", required = true)
-  private File diagramDirectory;
+  private File sourceDirectory;
 
   /**
-   * Convert diagram to this image format.
+   * Convert diagram to this image format. Supported formats are <code>bmp</code>, <code>eps</code>, <code>gif</code>,
+   * <code>jpg</code>, <code>pdf</code>, <code>png</code> and <code>svg</code>.
+   * 
+   * @since 1.0.0
    */
   @Parameter(defaultValue = "png", property = "umlet.format", required = true)
-  private String format;
+  private ConvertFormat format;
 
   public void execute() throws MojoExecutionException, MojoFailureException {
-    getLog().debug("Diagram directory: " + diagramDirectory);
+    getLog().debug("Diagram directory: " + sourceDirectory);
     getLog().debug("Output directory: " + outputDirectory);
     getLog().debug("Format: " + format);
-    if (diagramDirectory.isDirectory()) {
-      processDirectory(diagramDirectory);
+    if (sourceDirectory.isDirectory()) {
+      processDirectory(sourceDirectory);
     } else {
-      getLog().warn("Diagram directory does not exist: " + diagramDirectory);
+      getLog().warn("Diagram directory does not exist: " + sourceDirectory);
     }
   }
 
   private void processDirectory(final File dir) throws MojoExecutionException, MojoFailureException {
-    final File[] files = diagramDirectory.listFiles(DIAGRAM_FILEFILTER);
+    final File[] files = sourceDirectory.listFiles(DIAGRAM_FILEFILTER);
     for (final File f : files) {
       if (f.isDirectory()) {
         processDirectory(f);
@@ -92,7 +104,7 @@ public class ConvertDiagramMojo extends AbstractMojo {
 
   private void processDiagram(final File diagram) throws MojoExecutionException, MojoFailureException {
     final String diagramFilepath = diagram.getAbsolutePath();
-    final String sourceDirpath = diagramDirectory.getAbsolutePath();
+    final String sourceDirpath = sourceDirectory.getAbsolutePath();
     if (diagramFilepath.startsWith(sourceDirpath)) {
       final String relPath = diagramFilepath.substring(sourceDirpath.length());
       final int extIndex = relPath.lastIndexOf('.');
@@ -104,7 +116,7 @@ public class ConvertDiagramMojo extends AbstractMojo {
         final DiagramHandler diagramHandler = new DiagramHandler(diagram);
         try {
           getLog().info("Converting " + diagram);
-          diagramHandler.getFileHandler().doExportAs(format, imageFile);
+          diagramHandler.getFileHandler().doExportAs(format.name(), imageFile);
         } catch (final IOException e) {
           getLog().error("Failed to convert diagram", e);
           throw new MojoFailureException(this, "Cannot convert diagram " + diagram.getAbsolutePath(), e.getMessage());

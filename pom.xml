@@ -12,7 +12,7 @@
   <name>Maven UMLet Plugin</name>
 
   <description> This plugin generates the image files (different formats) for the UMLet diagrams
-    (xml files). It is built on the top of UMLet editor implementation. </description>
+    (uxf files). It is built on the top of UMLet editor implementation. </description>
 
   <url>http://ykryshchuk.github.com/umlet-maven-plugin/</url>
 
@@ -94,11 +94,17 @@
           <artifactId>maven-gpg-plugin</artifactId>
           <version>1.4</version>
         </plugin>
-        
+
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-site-plugin</artifactId>
           <version>3.2</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>2.4</version>
         </plugin>
 
       </plugins>
@@ -136,10 +142,26 @@
             <plugin>
               <artifactId>maven-plugin-plugin</artifactId>
             </plugin>
+            <plugin>
+              <artifactId>maven-project-info-reports-plugin</artifactId>
+              <configuration>
+                <dependencyDetailsEnabled>false</dependencyDetailsEnabled>
+                <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+              </configuration>
+              <reports>
+                <report>index</report>
+                <report>dependencies</report>
+                <report>project-team</report>
+                <report>mailing-list</report>
+                <report>license</report>
+                <report>scm</report>
+                <report>summary</report>
+              </reports>
+            </plugin>
           </reportPlugins>
         </configuration>
       </plugin>
-      
+
     </plugins>
 
   </build>

@@ -16,6 +16,8 @@
         <menu name="Examples">
         </menu>
         
+        <menu ref="reports" inherit="bottom"/>
+        
     </body>
     
 </project>
