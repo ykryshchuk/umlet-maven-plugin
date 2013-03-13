@@ -14,7 +14,7 @@
   <description> This plugin generates the image files (different formats) for the UMLet diagrams
     (xml files). It is built on the top of UMLet editor implementation. </description>
 
-  <url>https://github.com/ykryshchuk/umlet-maven-plugin/wiki</url>
+  <url>http://ykryshchuk.github.com/umlet-maven-plugin/</url>
 
   <inceptionYear>2013</inceptionYear>
 
@@ -94,6 +94,12 @@
           <artifactId>maven-gpg-plugin</artifactId>
           <version>1.4</version>
         </plugin>
+        
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>3.2</version>
+        </plugin>
 
       </plugins>
 
@@ -102,7 +108,6 @@
     <plugins>
 
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-plugin-plugin</artifactId>
         <configuration>
           <goalPrefix>umlet</goalPrefix>
@@ -124,6 +129,17 @@
         </executions>
       </plugin>
 
+      <plugin>
+        <artifactId>maven-site-plugin</artifactId>
+        <configuration>
+          <reportPlugins>
+            <plugin>
+              <artifactId>maven-plugin-plugin</artifactId>
+            </plugin>
+          </reportPlugins>
+        </configuration>
+      </plugin>
+      
     </plugins>
 
   </build>
