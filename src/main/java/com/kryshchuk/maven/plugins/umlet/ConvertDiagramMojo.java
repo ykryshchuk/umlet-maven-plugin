@@ -30,7 +30,7 @@ import org.apache.maven.plugins.annotations.Parameter;
 import com.baselet.diagram.DiagramHandler;
 
 /**
- * Goal which converts the UMLet UXF diagrams into the graphics files.
+ * Converts the UMLet UXF diagrams into the graphics files.
  * 
  * @since 1.0.0
  */
