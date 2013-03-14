@@ -4,23 +4,12 @@
     xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd"
     name="UMLet Maven plugin">
 
-    <publishDate format="yyyy-MM-dd HH:mm" position="left"/>
-
     <body>
-
-        <menu name="Overview">
-            <item name="Introduction" href="index.html"/>
-            <item name="Goals" href="plugin-info.html"/>
-            <item name="Usage" href="usage.html"/>
-            <item name="FAQ" href="faq.html"/>
-        </menu>
 
         <menu name="Examples"> 
             <item name="Customizing plugin" href="customizing.html"/>
             <item name="Multimodule Projects" href="multimodule.html"/>
         </menu>
-
-        <menu ref="reports" inherit="bottom"/>
 
     </body>
 

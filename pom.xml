@@ -1,8 +1,15 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.kryshchuk.maven.plugins</groupId>
+  <parent>
+    <groupId>com.kryshchuk.maven.plugins</groupId>
+    <artifactId>plugin-base</artifactId>
+    <version>1.0</version>
+  </parent>
+  
   <artifactId>umlet-maven-plugin</artifactId>
   <version>1.0.4-SNAPSHOT</version>
   <packaging>maven-plugin</packaging>
@@ -22,236 +29,35 @@
     <url>git@github.com:ykryshchuk/umlet-maven-plugin.git</url>
   </scm>
 
-  <licenses>
-
-    <license>
-      <name>GNU GENERAL PUBLIC LICENSE</name>
-      <url>http://www.gnu.org/licenses/gpl.html</url>
-      <distribution>repo</distribution>
-    </license>
-
-  </licenses>
-
-  <developers>
-
-    <developer>
-      <id>ykryshchuk</id>
-      <email>yuriy.kryshchuk@gmail.com</email>
-      <name>Yuriy Kryshchuk</name>
-      <timezone>2</timezone>
-      <organization>KOrga</organization>
-      <roles>
-        <role>all</role>
-      </roles>
-    </developer>
-
-  </developers>
-
   <distributionManagement>
 
-    <snapshotRepository>
-      <id>sonatype-nexus-snapshots</id>
-      <name>Sonatype Nexus Snapshots</name>
-      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-    </snapshotRepository>
-
-    <repository>
-      <id>sonatype-nexus-staging</id>
-      <name>Nexus Release Repository</name>
-      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-    </repository>
-
     <site>
-      <id>plugins.site</id>
-      <name>Site for QuizManager</name>
-      <url>${local.repository.base}/site/maven-plugins/${project.artifactId}</url>
+      <id>plugin.site</id>
+      <name>Project site</name>
+      <url>${project.siteUrl}</url>
     </site>
-
+    
   </distributionManagement>
 
   <build>
-
-    <pluginManagement>
-
-      <plugins>
-
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-plugin-plugin</artifactId>
-          <version>3.2</version>
-        </plugin>
-
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-invoker-plugin</artifactId>
-          <version>1.7</version>
-        </plugin>
-
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-gpg-plugin</artifactId>
-          <version>1.4</version>
-        </plugin>
-
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-site-plugin</artifactId>
-          <version>3.2</version>
-        </plugin>
-
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-project-info-reports-plugin</artifactId>
-          <version>2.6</version>
-        </plugin>
-
-      </plugins>
-
-    </pluginManagement>
 
     <plugins>
 
       <plugin>
         <artifactId>maven-plugin-plugin</artifactId>
-        <configuration>
-          <goalPrefix>umlet</goalPrefix>
-          <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
-        </configuration>
-        <executions>
-          <execution>
-            <id>mojo-descriptor</id>
-            <goals>
-              <goal>descriptor</goal>
-            </goals>
-          </execution>
-          <execution>
-            <id>help-goal</id>
-            <goals>
-              <goal>helpmojo</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
-
+      
       <plugin>
         <artifactId>maven-site-plugin</artifactId>
-        <configuration>
-          <reportPlugins>
-            <plugin>
-              <artifactId>maven-plugin-plugin</artifactId>
-            </plugin>
-            <plugin>
-              <artifactId>maven-project-info-reports-plugin</artifactId>
-              <configuration>
-                <dependencyDetailsEnabled>false</dependencyDetailsEnabled>
-                <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
-                <showAvatarImages>true</showAvatarImages>
-                <linkOnly>true</linkOnly>
-              </configuration>
-              <reports>
-                <report>dependencies</report>
-                <report>project-team</report>
-                <report>license</report>
-                <report>scm</report>
-                <report>summary</report>
-              </reports>
-            </plugin>
-          </reportPlugins>
-        </configuration>
       </plugin>
-
+      
     </plugins>
 
   </build>
 
-  <profiles>
-
-    <profile>
-      <id>run-its</id>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-invoker-plugin</artifactId>
-            <configuration>
-              <debug>true</debug>
-              <cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>
-              <pomIncludes>
-                <pomInclude>*/pom.xml</pomInclude>
-              </pomIncludes>
-              <postBuildHookScript>verify</postBuildHookScript>
-              <localRepositoryPath>${project.build.directory}/local-repo</localRepositoryPath>
-              <settingsFile>src/it/settings.xml</settingsFile>
-              <goals>
-                <goal>clean</goal>
-                <goal>test-compile</goal>
-              </goals>
-            </configuration>
-            <executions>
-              <execution>
-                <id>integration-test</id>
-                <goals>
-                  <goal>install</goal>
-                  <goal>integration-test</goal>
-                  <goal>verify</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-
-    <profile>
-      <id>release-sign-artifacts</id>
-      <activation>
-        <property>
-          <name>performRelease</name>
-          <value>true</value>
-        </property>
-      </activation>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-gpg-plugin</artifactId>
-            <executions>
-              <execution>
-                <id>sign-artifacts</id>
-                <phase>verify</phase>
-                <goals>
-                  <goal>sign</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-
-  </profiles>
-
   <dependencyManagement>
 
     <dependencies>
-
-      <dependency>
-        <groupId>org.apache.maven</groupId>
-        <artifactId>maven-plugin-api</artifactId>
-        <version>2.0</version>
-      </dependency>
-
-      <dependency>
-        <groupId>org.apache.maven.plugin-tools</groupId>
-        <artifactId>maven-plugin-annotations</artifactId>
-        <version>3.2</version>
-      </dependency>
-
-      <dependency>
-        <groupId>org.codehaus.plexus</groupId>
-        <artifactId>plexus-utils</artifactId>
-        <version>3.0.8</version>
-      </dependency>
 
       <dependency>
         <groupId>com.umlet</groupId>
@@ -340,22 +146,6 @@
   <dependencies>
 
     <dependency>
-      <groupId>org.apache.maven</groupId>
-      <artifactId>maven-plugin-api</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.maven.plugin-tools</groupId>
-      <artifactId>maven-plugin-annotations</artifactId>
-      <scope>provided</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.codehaus.plexus</groupId>
-      <artifactId>plexus-utils</artifactId>
-    </dependency>
-
-    <dependency>
       <groupId>com.umlet</groupId>
       <artifactId>umlet</artifactId>
     </dependency>
@@ -423,8 +213,6 @@
   </dependencies>
 
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <batik.version>1.6-1</batik.version>
   </properties>
 
