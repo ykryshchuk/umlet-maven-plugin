@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>UMLet Maven plugin - 
-    UMLet Maven Plugin</title>
+    Customizing UMLet Maven Plugin</title>
     <style type="text/css" media="all">
       @import url("./css/maven-base.css");
       @import url("./css/maven-theme.css");
@@ -45,8 +45,8 @@
                                 <h5>Overview</h5>
                   <ul>
                   <li class="none">
-            <strong>Introduction</strong>
-          </li>
+                          <a href="index.html" title="Introduction">Introduction</a>
+            </li>
                   <li class="none">
                           <a href="plugin-info.html" title="Goals">Goals</a>
             </li>
@@ -60,8 +60,8 @@
                        <h5>Examples</h5>
                   <ul>
                   <li class="none">
-                          <a href="customizing.html" title="Customizing plugin">Customizing plugin</a>
-            </li>
+            <strong>Customizing plugin</strong>
+          </li>
                   <li class="none">
                           <a href="multimodule.html" title="Multimodule Projects">Multimodule Projects</a>
             </li>
@@ -88,26 +88,55 @@
 
   
 
-    <div class="section"><h2>Maven UMLet Plugin<a name="Maven_UMLet_Plugin"></a></h2>
+    <div class="section"><h2>Image Formats<a name="Image_Formats"></a></h2>
 
-      <p>This plugin generates the image files (different formats) for the UMLet diagrams
-    (uxf files). It is built on the top of UMLet editor implementation.</p>
+      <p>UMlet Maven Plugin supports several output images formats. Specify the required format by
+        providing the plugin <tt>format</tt> property as shown below:</p>
 
-      <p>For more details on UML Editor please refer to the <a class="externalLink" href="http://umlet.com/">UMLet
-          Homepage</a>.</p>
-      
-      <p><img src="http://umlet.com/umlet_logo.jpg" alt="UMLet Logo" border="0" /></p>
+      <div class="source"><pre>
+&lt;project&gt;
+    ...
+    &lt;build&gt;
+        ...
+        &lt;plugins&gt;
+            ...
+            &lt;plugin&gt;
+                &lt;groupId&gt;${project.groupId}&lt;/groupId&gt;
+                &lt;artifactId&gt;${project.artifactId}&lt;/artifactId&gt;
+                &lt;configuration&gt;
+                  &lt;format&gt;jpg&lt;/format&gt;
+                &lt;/configuration&gt;
+                &lt;executions&gt;
+                    &lt;execution&gt;
+                        &lt;id&gt;convert-uml&lt;/id&gt;
+                        &lt;goals&gt;
+                            &lt;goal&gt;convert&lt;/goal&gt;
+                        &lt;/goals&gt;
+                    &lt;/execution&gt;
+                &lt;/executions&gt;
+            &lt;/plugin&gt;
+            ...
+        &lt;/plugins&gt;
+        ...
+    &lt;/build&gt;
+    ...
+&lt;/project&gt;
+            </pre></div>
 
-    </div>
-
-    <div class="section"><h2>References<a name="References"></a></h2>
-
+      <p>Supported formats are:</p>
       <ul>
-        <li><a href="usage.html">Plugin Usage</a></li>
-        <li><a href="plugin-info.html">Plugin Goals</a></li>
+        <li>bmp</li>
+        <li>eps</li>
+        <li>gif</li>
+        <li>jpg</li>
+        <li>pdf</li>
+        <li>png - default</li>
+        <li>svg</li>
       </ul>
 
     </div>
+    
+    
 
   
 

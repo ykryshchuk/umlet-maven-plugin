@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>UMLet Maven plugin - 
-    UMLet Maven Plugin</title>
+    UMLet Maven Plugin in Multimodule Projects</title>
     <style type="text/css" media="all">
       @import url("./css/maven-base.css");
       @import url("./css/maven-theme.css");
@@ -45,8 +45,8 @@
                                 <h5>Overview</h5>
                   <ul>
                   <li class="none">
-            <strong>Introduction</strong>
-          </li>
+                          <a href="index.html" title="Introduction">Introduction</a>
+            </li>
                   <li class="none">
                           <a href="plugin-info.html" title="Goals">Goals</a>
             </li>
@@ -63,8 +63,8 @@
                           <a href="customizing.html" title="Customizing plugin">Customizing plugin</a>
             </li>
                   <li class="none">
-                          <a href="multimodule.html" title="Multimodule Projects">Multimodule Projects</a>
-            </li>
+            <strong>Multimodule Projects</strong>
+          </li>
           </ul>
                        <h5>Project Documentation</h5>
                   <ul>
@@ -88,24 +88,14 @@
 
   
 
-    <div class="section"><h2>Maven UMLet Plugin<a name="Maven_UMLet_Plugin"></a></h2>
+    <div class="section"><h2>Multimodule Projects<a name="Multimodule_Projects"></a></h2>
 
-      <p>This plugin generates the image files (different formats) for the UMLet diagrams
-    (uxf files). It is built on the top of UMLet editor implementation.</p>
+      <p>If you have a multimodule projects (several levels of nested moodules) you can declare the
+        UMlet Maven Plugin in your topmost parent project. Its behavior will be inherited by all
+        modules recursively. </p>
 
-      <p>For more details on UML Editor please refer to the <a class="externalLink" href="http://umlet.com/">UMLet
-          Homepage</a>.</p>
-      
-      <p><img src="http://umlet.com/umlet_logo.jpg" alt="UMLet Logo" border="0" /></p>
-
-    </div>
-
-    <div class="section"><h2>References<a name="References"></a></h2>
-
-      <ul>
-        <li><a href="usage.html">Plugin Usage</a></li>
-        <li><a href="plugin-info.html">Plugin Goals</a></li>
-      </ul>
+      <p>The plugin will look for diagrams in each individual project and convert diagrams to images
+        in corresponding <tt>target/site</tt> directories.</p>
 
     </div>
 
