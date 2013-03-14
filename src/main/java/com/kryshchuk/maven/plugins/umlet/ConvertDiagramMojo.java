@@ -54,9 +54,9 @@ public class ConvertDiagramMojo extends AbstractMojo {
   /**
    * Target directory to store the converted images. If the source directory contains the sub-directories with diagram
    * sources the generated image files will be created in the same sub-directories under the target directory. For
-   * example, the diagram <code>diagramDirectory/overview.uxf</code> will be converted into
-   * <code>targetDirectory/overview.png</code>, and the directory <code>diagramDirectory/sub1/sub2/details.uxf</code>
-   * will be converted into <code>targetDirectory/sub1/sub2/details.png</code>
+   * example, the diagram <code>sourceDirectory/overview.uxf</code> will be converted into
+   * <code>outputDirectory/overview.png</code>, and the directory <code>sourceDirectory/sub1/sub2/details.uxf</code>
+   * will be converted into <code>outputDirectory/sub1/sub2/details.png</code>
    * 
    * @since 1.0.0
    */

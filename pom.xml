@@ -149,7 +149,6 @@
                 <linkOnly>true</linkOnly>
               </configuration>
               <reports>
-                <report>index</report>
                 <report>dependencies</report>
                 <report>project-team</report>
                 <report>license</report>
@@ -425,6 +424,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <batik.version>1.6-1</batik.version>
   </properties>
 

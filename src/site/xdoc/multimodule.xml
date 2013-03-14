@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+
+  <head>
+    <title>UMLet Maven Plugin in Multimodule Projects</title>
+  </head>
+
+  <body>
+
+    <section name="Multimodule Projects">
+
+      <p>If you have a multimodule projects (several levels of nested moodules) you can declare the
+        UMlet Maven Plugin in your topmost parent project. Its behavior will be inherited by all
+        modules recursively. </p>
+
+      <p>The plugin will look for diagrams in each individual project and convert diagrams to images
+        in corresponding <code>target/site</code> directories.</p>
+
+    </section>
+
+  </body>
+
+</document>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+
+    <head>
+        <title>Usage for UMLet Maven Plugin</title>
+    </head>
+
+    <body>
+
+        <section name="Overview">
+
+            <p>The main purpose of the plugin is to convert text based (XML) UML diagrams from your
+                source tree into the binary image files that you embed or refer from your project
+                site.</p>
+
+        </section>
+
+        <section name="Converting Site Diagrams">
+
+            <p>By default the plugin expects UMLet Diagrams to be located under the
+                    <code>src/site/resources/uml</code> source sub-tree.</p>
+
+            <pre><![CDATA[
++- src/
+   +- site/
+      +- resources/
+      |  +- uml/
+      |     +- subdir1/
+      |     |  +- subdiagram.uxf
+      |     +- diagram1.uxf
+      |     +- diagram2.uxf
+      +- site.xml
+                ]]></pre>
+
+            <p>The converted images (PNG by default) are stored in the generated site directory at
+                    <code>target/site/uml</code>.</p>
+
+            <pre><![CDATA[
++- target/
+   +- site/
+   |  +- uml/
+   |     +- subdir1/
+   |     |  +- subdiagram.png
+   |     +- diagram1.png
+   |     +- diagram2.png
+   +- index.html
+                ]]></pre>
+
+            <p>In order to apply diagrams converting in your project you just need to declare the
+                plugin in your pom like following:</p>
+
+            <source><![CDATA[
+<project>
+    ...
+    <build>
+        ...
+        <plugins>
+            ...
+            <plugin>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>${project.artifactId}</artifactId>
+                <executions>
+                    <execution>
+                        <id>convert-uml</id>
+                        <goals>
+                            <goal>convert</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            ...
+        </plugins>
+        ...
+    </build>
+    ...
+</project>
+            ]]></source>
+
+        </section>
+
+    </body>
+
+</document>

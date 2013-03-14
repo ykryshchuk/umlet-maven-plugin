@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faqs xmlns="http://maven.apache.org/FML/1.0.1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/FML/1.0.1 http://maven.apache.org/xsd/fml-1.0.1.xsd"
+    title="Frequently Asked Questions" toplink="false">
+
+    <part id="General">
+
+        <faq id="whatisumlet">
+            <question>What is UMLet?</question>
+            <answer>
+                <p>UMLet is a lightweight UML Editor.</p>
+                <cite>UMLet is a free, open-source UML tool with a simple user interface: draw UML
+                    diagrams fast, produce sequence and activity diagrams from plain text, export
+                    diagrams to eps, pdf, jpg, svg, and clipboard, share diagrams using Eclipse, and
+                    create new, custom UML elements. UMLet runs stand-alone or as Eclipse plug-in on
+                    Windows, OS X and Linux.</cite>
+                <p>See more details on <a href="http://umlet.com">UMLet Homepage</a></p>
+            </answer>
+        </faq>
+
+    </part>
+
+</faqs>

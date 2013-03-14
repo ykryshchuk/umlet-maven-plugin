@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+
+  <head>
+    <title>Customizing UMLet Maven Plugin</title>
+  </head>
+
+  <body>
+
+    <section name="Image Formats">
+
+      <p>UMlet Maven Plugin supports several output images formats. Specify the required format by
+        providing the plugin <code>format</code> property as shown below:</p>
+
+      <source><![CDATA[
+<project>
+    ...
+    <build>
+        ...
+        <plugins>
+            ...
+            <plugin>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>${project.artifactId}</artifactId>
+                <configuration>
+                  <format>jpg</format>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>convert-uml</id>
+                        <goals>
+                            <goal>convert</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            ...
+        </plugins>
+        ...
+    </build>
+    ...
+</project>
+            ]]></source>
+
+      <p>Supported formats are:</p>
+      <ul>
+        <li>bmp</li>
+        <li>eps</li>
+        <li>gif</li>
+        <li>jpg</li>
+        <li>pdf</li>
+        <li>png - default</li>
+        <li>svg</li>
+      </ul>
+
+    </section>
+    
+    
+
+  </body>
+
+</document>

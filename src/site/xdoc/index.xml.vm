@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+
+  <head>
+    <title>UMLet Maven Plugin</title>
+  </head>
+
+  <body>
+
+    <section name="${project.name}">
+
+      <p>${project.description}</p>
+
+      <p>For more details on UML Editor please refer to the <a href="http://umlet.com/">UMLet
+          Homepage</a>.</p>
+      
+      <p><img src="http://umlet.com/umlet_logo.jpg" alt="UMLet Logo" border="0"/></p>
+
+    </section>
+
+    <section name="References">
+
+      <ul>
+        <li><a href="usage.html">Plugin Usage</a></li>
+        <li><a href="plugin-info.html">Plugin Goals</a></li>
+      </ul>
+
+    </section>
+
+  </body>
+
+</document>
