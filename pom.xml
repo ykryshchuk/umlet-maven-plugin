@@ -9,7 +9,7 @@
   </parent>
   
   <artifactId>umlet-maven-plugin</artifactId>
-  <version>1.0.5-SNAPSHOT</version>
+  <version>1.0.5</version>
   <packaging>maven-plugin</packaging>
 
   <name>Maven UMLet Plugin</name>
