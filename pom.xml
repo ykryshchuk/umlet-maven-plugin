@@ -51,6 +51,12 @@
       
       <plugin>
         <artifactId>maven-javadoc-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>fix-javadoc-since</id>
+            <phase>compile</phase>
+          </execution>
+        </executions>
       </plugin>
       
     </plugins>
