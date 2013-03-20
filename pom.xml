@@ -5,7 +5,7 @@
   <parent>
     <groupId>com.kryshchuk.maven.plugins</groupId>
     <artifactId>plugin-base</artifactId>
-    <version>1.0</version>
+    <version>1.0.4</version>
   </parent>
   
   <artifactId>umlet-maven-plugin</artifactId>
@@ -212,6 +212,7 @@
 
   <properties>
     <batik.version>1.6-1</batik.version>
+    <plugin.goalPrefix>umlet</plugin.goalPrefix>
   </properties>
 
 </project>
