@@ -39,6 +39,9 @@ public class ConvertDiagramMojo extends AbstractMojo {
 
   private static final FileFilter DIAGRAM_FILEFILTER = new FileFilter() {
 
+    /**
+     * @return
+     */
     public boolean accept(final File f) {
       if (f.isDirectory()) {
         return true;
@@ -80,6 +83,16 @@ public class ConvertDiagramMojo extends AbstractMojo {
   @Parameter(defaultValue = "png", property = "umlet.format", required = true)
   private ConvertFormat format;
 
+  /**
+   * <p>
+   * execute.
+   * </p>
+   * 
+   * @throws org.apache.maven.plugin.MojoExecutionException
+   *           if any.
+   * @throws org.apache.maven.plugin.MojoFailureException
+   *           if any.
+   */
   public void execute() throws MojoExecutionException, MojoFailureException {
     getLog().debug("Diagram directory: " + sourceDirectory);
     getLog().debug("Output directory: " + outputDirectory);
