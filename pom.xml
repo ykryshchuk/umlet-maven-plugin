@@ -5,11 +5,11 @@
   <parent>
     <groupId>com.kryshchuk.maven.plugins</groupId>
     <artifactId>plugin-base</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
   </parent>
   
   <artifactId>umlet-maven-plugin</artifactId>
-  <version>1.0.5</version>
+  <version>1.0.6-SNAPSHOT</version>
   <packaging>maven-plugin</packaging>
 
   <name>Maven UMLet Plugin</name>
