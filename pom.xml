@@ -5,7 +5,7 @@
   <parent>
     <groupId>com.kryshchuk.maven.plugins</groupId>
     <artifactId>plugin-base</artifactId>
-    <version>1.0.7</version>
+    <version>1.0.8</version>
   </parent>
   
   <artifactId>umlet-maven-plugin</artifactId>
@@ -49,38 +49,10 @@
         <artifactId>maven-site-plugin</artifactId>
       </plugin>
       
-      <plugin>
-        <artifactId>maven-javadoc-plugin</artifactId>
-      </plugin>
-      
     </plugins>
 
   </build>
   
-  <profiles>
-    
-    <profile>
-      <id>FixJavadoc</id>
-      <activation>
-        <property>
-          <name>fixJavadoc</name>
-          <value>true</value>
-        </property>
-      </activation>
-      <build>
-        <plugins>
-          <plugin>
-            <artifactId>maven-release-plugin</artifactId>
-            <configuration>
-              <arguments>-DfixJavadoc=true</arguments>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-    
-  </profiles>
-
   <dependencyManagement>
 
     <dependencies>
