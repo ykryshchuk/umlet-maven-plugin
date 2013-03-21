@@ -15,7 +15,7 @@ import com.baselet.diagram.DiagramHandler;
 
 /**
  * Converts the UMLet UXF diagrams into the graphics files.
- * 
+ *
  * @since 1.0.0
  */
 @Mojo(name = "convert", defaultPhase = LifecyclePhase.PRE_SITE, threadSafe = true)
@@ -44,7 +44,6 @@ public class ConvertDiagramMojo extends AbstractMojo {
    * example, the diagram <code>sourceDirectory/overview.uxf</code> will be converted into
    * <code>outputDirectory/overview.png</code>, and the directory <code>sourceDirectory/sub1/sub2/details.uxf</code>
    * will be converted into <code>outputDirectory/sub1/sub2/details.png</code>
-   * 
    * @since 1.0.0
    */
   @Parameter(defaultValue = "${project.reporting.outputDirectory}/uml", property = "umlet.targetDir", required = true)
@@ -52,7 +51,6 @@ public class ConvertDiagramMojo extends AbstractMojo {
 
   /**
    * Root source directory with UMLet UXF diagrams. Sub-directories will be scanned for the diagram sources as well.
-   * 
    * @since 1.0.0
    */
   @Parameter(defaultValue = "${basedir}/src/site/resources/uml", property = "umlet.sourceDir", required = true)
@@ -61,7 +59,6 @@ public class ConvertDiagramMojo extends AbstractMojo {
   /**
    * Convert diagram to this image format. Supported formats are <code>bmp</code>, <code>eps</code>, <code>gif</code>,
    * <code>jpg</code>, <code>pdf</code>, <code>png</code> and <code>svg</code>.
-   * 
    * @since 1.0.0
    */
   @Parameter(defaultValue = "png", property = "umlet.format", required = true)
@@ -71,11 +68,12 @@ public class ConvertDiagramMojo extends AbstractMojo {
    * <p>
    * execute.
    * </p>
-   * 
+   *
    * @throws org.apache.maven.plugin.MojoExecutionException
    *           if any.
    * @throws org.apache.maven.plugin.MojoFailureException
    *           if any.
+   * @since 1.0.8
    */
   public void execute() throws MojoExecutionException, MojoFailureException {
     getLog().debug("Diagram directory: " + sourceDirectory);
