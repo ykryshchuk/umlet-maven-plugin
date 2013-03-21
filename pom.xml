@@ -56,6 +56,30 @@
     </plugins>
 
   </build>
+  
+  <profiles>
+    
+    <profile>
+      <id>FixJavadoc</id>
+      <activation>
+        <property>
+          <name>fixJavadoc</name>
+          <value>true</value>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>maven-release-plugin</artifactId>
+            <configuration>
+              <arguments>-DfixJavadoc=true</arguments>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    
+  </profiles>
 
   <dependencyManagement>
 
