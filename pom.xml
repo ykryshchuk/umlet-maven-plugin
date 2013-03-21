@@ -9,7 +9,7 @@
   </parent>
   
   <artifactId>umlet-maven-plugin</artifactId>
-  <version>1.0.8-SNAPSHOT</version>
+  <version>1.0.8</version>
   <packaging>maven-plugin</packaging>
 
   <name>Maven UMLet Plugin</name>
@@ -25,6 +25,7 @@
     <connection>scm:git:git://github.com/ykryshchuk/umlet-maven-plugin.git</connection>
     <developerConnection>scm:git:git@github.com:ykryshchuk/umlet-maven-plugin.git</developerConnection>
     <url>git@github.com:ykryshchuk/umlet-maven-plugin.git</url>
+    <tag>umlet-maven-plugin-1.0.8</tag>
   </scm>
 
   <distributionManagement>
