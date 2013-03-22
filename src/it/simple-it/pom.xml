@@ -26,6 +26,13 @@
             <goals>
               <goal>convert</goal>
             </goals>
+            <configuration>
+              <filesets>
+                <fileset>
+                  <directory>src/uml</directory>
+                </fileset>
+              </filesets>
+            </configuration>
           </execution>
         </executions>
       </plugin>
