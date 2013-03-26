@@ -45,8 +45,8 @@
                                 <h5>Overview</h5>
                   <ul>
                   <li class="none">
-            <strong>Introduction</strong>
-          </li>
+                          <a href="index.html" title="Introduction">Introduction</a>
+            </li>
                   <li class="none">
                           <a href="plugin-info.html" title="Goals">Goals</a>
             </li>
@@ -66,8 +66,8 @@
                           <a href="multimodule.html" title="Multimodule Projects">Multimodule Projects</a>
             </li>
                   <li class="none">
-                          <a href="locations.html" title="Alternative Locations">Alternative Locations</a>
-            </li>
+            <strong>Alternative Locations</strong>
+          </li>
           </ul>
                        <h5>Project Documentation</h5>
                   <ul>
@@ -91,24 +91,102 @@
 
   
 
-    <div class="section"><h2>UMLet Maven Plugin<a name="UMLet_Maven_Plugin"></a></h2>
+    <div class="section"><h2>Output directory<a name="Output_directory"></a></h2>
 
-      <p>This plugin generates the image files (different formats) for the UMLet diagrams
-    (uxf files). It is built on the top of UMLet editor implementation.</p>
+      <p>Default output directory used by UMlet Maven Plugin is
+          <tt><i>$</i>{project.reporting.outputDirectory}/uml</tt>, you can change the location
+        as:</p>
 
-      <p>For more details on UML Editor please refer to the <a class="externalLink" href="http://umlet.com/">UMLet
-          Homepage</a>.</p>
-      
-      <p><img src="http://umlet.com/umlet_logo.jpg" alt="UMLet Logo" border="0" /></p>
+      <div class="source"><pre>
+&lt;project&gt;
+    ...
+    &lt;build&gt;
+        ...
+        &lt;plugins&gt;
+            ...
+            &lt;plugin&gt;
+                &lt;groupId&gt;com.kryshchuk.maven.plugins&lt;/groupId&gt;
+                &lt;artifactId&gt;umlet-maven-plugin&lt;/artifactId&gt;
+                &lt;executions&gt;
+                    &lt;execution&gt;
+                        &lt;id&gt;convert-uml-to-jpeg&lt;/id&gt;
+                        &lt;goals&gt;
+                            &lt;goal&gt;convert&lt;/goal&gt;
+                        &lt;/goals&gt;
+                        &lt;configuration&gt;
+                            &lt;outputDirectory&gt;target/jpeg-images&lt;/outputDirectory&gt;
+                            &lt;format&gt;jpg&lt;/format&gt;
+                        &lt;/configuration&gt;
+                    &lt;/execution&gt;
+                    &lt;execution&gt;
+                        &lt;id&gt;convert-uml-to-gif&lt;/id&gt;
+                        &lt;goals&gt;
+                            &lt;goal&gt;convert&lt;/goal&gt;
+                        &lt;/goals&gt;
+                        &lt;configuration&gt;
+                            &lt;outputDirectory&gt;target/gif-images&lt;/outputDirectory&gt;
+                            &lt;format&gt;gif&lt;/format&gt;
+                        &lt;/configuration&gt;
+                    &lt;/execution&gt;
+                &lt;/executions&gt;
+            &lt;/plugin&gt;
+            ...
+        &lt;/plugins&gt;
+        ...
+    &lt;/build&gt;
+    ...
+&lt;/project&gt;
+            </pre></div>
 
     </div>
 
-    <div class="section"><h2>References<a name="References"></a></h2>
+    <div class="section"><h2>Diagram sources<a name="Diagram_sources"></a></h2>
 
-      <ul>
-        <li><a href="usage.html">Plugin Usage</a></li>
-        <li><a href="plugin-info.html">Plugin Goals</a></li>
-      </ul>
+      <p>If you do not specify explicitly, the UMlet Maven Plugin will look for diagrams in
+          <tt>src/site/resources/uml</tt> subtree. You can change the location as:</p>
+
+      <div class="source"><pre>
+&lt;project&gt;
+    ...
+    &lt;build&gt;
+        ...
+        &lt;plugins&gt;
+            ...
+            &lt;plugin&gt;
+                &lt;groupId&gt;com.kryshchuk.maven.plugins&lt;/groupId&gt;
+                &lt;artifactId&gt;umlet-maven-plugin&lt;/artifactId&gt;
+                &lt;configuration&gt;
+                    &lt;format&gt;jpg&lt;/format&gt;
+                    &lt;filesets&gt;
+                        &lt;fileset&gt;
+                            &lt;directory&gt;src/uml&lt;/directory&gt;
+                            &lt;includes&gt;
+                                &lt;include&gt;**/*.uxf&lt;/include&gt;
+                            &lt;/incudes&gt;
+                            &lt;excludes&gt;
+                                &lt;exclude&gt;proba1&lt;/exclude&gt;
+                                &lt;exclude&gt;proba2&lt;/exclude&gt;
+                                &lt;exclude&gt;**/stage/**&lt;/exclude&gt;
+                            &lt;/excludes&gt;
+                        &lt;/fileset&gt;
+                    &lt;/filesets&gt;
+                &lt;/configuration&gt;
+                &lt;executions&gt;
+                    &lt;execution&gt;
+                        &lt;id&gt;convert-uml&lt;/id&gt;
+                        &lt;goals&gt;
+                            &lt;goal&gt;convert&lt;/goal&gt;
+                        &lt;/goals&gt;
+                    &lt;/execution&gt;
+                &lt;/executions&gt;
+            &lt;/plugin&gt;
+            ...
+        &lt;/plugins&gt;
+        ...
+    &lt;/build&gt;
+    ...
+&lt;/project&gt;
+            </pre></div>
 
     </div>
 
