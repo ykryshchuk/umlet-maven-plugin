@@ -29,6 +29,7 @@ import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
+import org.slf4j.impl.StaticLoggerBinder;
 
 import com.baselet.diagram.DiagramHandler;
 import com.kryshchuk.maven.plugins.filevisitor.AbstractFileVisitor;
@@ -106,7 +107,9 @@ public class ConvertDiagramMojo extends AbstractMojo {
    *           if any.
    * @since 1.0.8
    */
+  @Override
   public void execute() throws MojoExecutionException, MojoFailureException {
+    StaticLoggerBinder.getSingleton().setLog(getLog());
     if (filesets == null || filesets.isEmpty()) {
       getLog().info("Using default diagrams location");
       processFileSet(new DefaultDiagramSet());
