@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+
+  <head>
+    <title>UMLet Maven Plugin</title>
+  </head>
+
+  <body>
+
+    <section name="Output directory">
+
+      <p>Default output directory used by UMlet Maven Plugin is
+          <code><i>$</i>{project.reporting.outputDirectory}/uml</code>, you can change the location
+        as:</p>
+
+      <source><![CDATA[
+<project>
+    ...
+    <build>
+        ...
+        <plugins>
+            ...
+            <plugin>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>${project.artifactId}</artifactId>
+                <executions>
+                    <execution>
+                        <id>convert-uml-to-jpeg</id>
+                        <goals>
+                            <goal>convert</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>target/jpeg-images</outputDirectory>
+                            <format>jpg</format>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>convert-uml-to-gif</id>
+                        <goals>
+                            <goal>convert</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>target/gif-images</outputDirectory>
+                            <format>gif</format>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            ...
+        </plugins>
+        ...
+    </build>
+    ...
+</project>
+            ]]></source>
+
+    </section>
+
+    <section name="Diagram sources">
+
+      <p>If you do not specify explicitly, the UMlet Maven Plugin will look for diagrams in
+          <code>src/site/resources/uml</code> subtree. You can change the location as:</p>
+
+      <source><![CDATA[
+<project>
+    ...
+    <build>
+        ...
+        <plugins>
+            ...
+            <plugin>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>${project.artifactId}</artifactId>
+                <configuration>
+                    <format>jpg</format>
+                    <filesets>
+                        <fileset>
+                            <directory>src/uml</directory>
+                            <includes>
+                                <include>**/*.uxf</include>
+                            </incudes>
+                            <excludes>
+                                <exclude>proba1</exclude>
+                                <exclude>proba2</exclude>
+                                <exclude>**/stage/**</exclude>
+                            </excludes>
+                        </fileset>
+                    </filesets>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>convert-uml</id>
+                        <goals>
+                            <goal>convert</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            ...
+        </plugins>
+        ...
+    </build>
+    ...
+</project>
+            ]]></source>
+
+    </section>
+
+  </body>
+
+</document>
