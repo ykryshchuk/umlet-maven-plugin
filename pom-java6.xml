@@ -10,7 +10,7 @@
     <version>1.2.6</version>
   </parent>
 
-  <artifactId>umlet-maven-plugin</artifactId>
+  <artifactId>umlet-maven-plugin-java6</artifactId>
   <version>1.1.4</version>
   <packaging>maven-plugin</packaging>
 
