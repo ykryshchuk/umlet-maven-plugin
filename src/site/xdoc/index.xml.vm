@@ -15,13 +15,13 @@
 
       <p>For more details on UML Editor please refer to the <a href="http://umlet.com/">UMLet
           Homepage</a>.</p>
-      
+
       <p><img src="http://umlet.com/umlet_logo.jpg" alt="UMLet Logo" border="0"/></p>
 
     </section>
 
     <section name="References">
-
+      
       <ul>
         <li><a href="usage.html">Plugin Usage</a></li>
         <li><a href="plugin-info.html">Plugin Goals</a></li>
