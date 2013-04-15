@@ -1,19 +1,16 @@
 /*
  * UMLet Maven Plugin
- * Copyright (C) 2013  Yuriy Kryshchuk
- * 
+ * Copyright (C) 2013 Yuriy Kryshchuk
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses />.
+ * along with this program. If not, see <http://www.gnu.org/licenses />.
  */
 package com.kryshchuk.maven.plugins.umlet;
 
@@ -31,6 +28,8 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 import org.slf4j.impl.StaticLoggerBinder;
 
+import com.baselet.control.Constants.Program;
+import com.baselet.control.Constants.RuntimeType;
 import com.baselet.diagram.DiagramHandler;
 import com.kryshchuk.maven.plugins.filevisitor.AbstractFileVisitor;
 import com.kryshchuk.maven.plugins.filevisitor.FileMapper;
@@ -85,6 +84,7 @@ public class ConvertDiagramMojo extends AbstractMojo {
     @Override
     protected void handleFile(final File inputFile, final File outputFile) throws VisitorException {
       verifyParentDirectory(outputFile);
+      Program.RUNTIME_TYPE = RuntimeType.BATCH;
       final DiagramHandler diagramHandler = new DiagramHandler(inputFile);
       try {
         getLog().info("Converting " + inputFile);
@@ -145,6 +145,5 @@ public class ConvertDiagramMojo extends AbstractMojo {
       setDirectory(diagramsDirectory);
       setIncludes(Arrays.asList("**/*.uxf"));
     }
-
   }
 }
