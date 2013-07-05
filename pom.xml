@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
 
@@ -10,7 +9,7 @@
   </parent>
 
   <artifactId>umlet-maven-plugin</artifactId>
-  <version>1.1.6-SNAPSHOT</version>
+  <version>1.1.6</version>
   <packaging>maven-plugin</packaging>
 
   <name>UMLet Maven Plugin</name>
@@ -26,7 +25,7 @@
     <connection>scm:git:git://github.com/ykryshchuk/umlet-maven-plugin.git</connection>
     <developerConnection>scm:git:git@github.com:ykryshchuk/umlet-maven-plugin.git</developerConnection>
     <url>git@github.com:ykryshchuk/umlet-maven-plugin.git</url>
-    <tag>HEAD</tag>
+    <tag>umlet-maven-plugin-1.1.6</tag>
   </scm>
 
   <issueManagement>
