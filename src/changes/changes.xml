@@ -1,0 +1,21 @@
+<document xmlns="http://maven.apache.org/changes/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/changes/1.0.0 http://maven.apache.org/xsd/changes-1.0.0.xsd">
+
+  <properties>
+    <title>UMLet Maven Plugin Changes</title>
+    <author email="yuriy.kryshchuk@gmail.com">Yuriy Kryshchuk</author>
+  </properties>
+
+  <body>
+
+    <release version="1.1.6" date="2013-07-05" description="Bugfix">
+
+      <action type="fix" due-to="barthel" dev="ykryshchuk" date="2013-07-05" issue="3">
+        Could not generate SVG output for diagrams.
+      </action>
+
+    </release>
+
+  </body>
+
+</document>
