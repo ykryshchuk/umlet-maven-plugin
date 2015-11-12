@@ -31,8 +31,6 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 import org.slf4j.impl.StaticLoggerBinder;
 
-import com.baselet.control.Constants.Program;
-import com.baselet.control.Constants.RuntimeType;
 import com.baselet.diagram.DiagramHandler;
 import com.kryshchuk.maven.plugins.filevisitor.AbstractFileVisitor;
 import com.kryshchuk.maven.plugins.filevisitor.FileMapper;
@@ -87,7 +85,6 @@ public class ConvertDiagramMojo extends AbstractMojo {
     @Override
     protected void handleFile(final File inputFile, final File outputFile) throws VisitorException {
       verifyParentDirectory(outputFile);
-      Program.RUNTIME_TYPE = RuntimeType.BATCH;
       final DiagramHandler diagramHandler = new DiagramHandler(inputFile);
       try {
         getLog().info("Converting " + inputFile);

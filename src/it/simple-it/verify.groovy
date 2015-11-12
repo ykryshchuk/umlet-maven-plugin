@@ -7,3 +7,6 @@ assert compAFile.isFile()
 File compBFile = new File( basedir, "target/site/uml/comp/compB.png" );
 assert compBFile.isFile()
 
+File umlet13File = new File( basedir, "target/site/uml/umlet-13.png" );
+assert umlet13File.isFile()
+
