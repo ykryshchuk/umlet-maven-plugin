@@ -4,6 +4,7 @@ jdk:
   - openjdk7
 build_image: shippableimages/ubuntu1404_java
 before_install:
+  - apt-get update
   - apt-get install -y maven
 before_script:
   - export JAVA_HOME="/usr/lib/jvm/java-7-openjdk-amd64"
